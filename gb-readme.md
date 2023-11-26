@@ -1,27 +1,27 @@
-# Learn Go with Tests
+# یادگیری گو با تست
 
 <div style="text-align: center">
   <img src="red-green-blue-gophers-smaller.png" />
 </div>
 
-[Art by Denise](https://twitter.com/deniseyu21)
+[طراحی اثر دنیس](https://twitter.com/deniseyu21)
 
-## Support me
+## حمایت از نویسنده
 
-I am proud to offer this resource for free, but if you wish to give some appreciation
+نویسنده‌ این اثر را به شکل رایگان منتشر کرده است اما اگر قصد حمایت از او را دارید می‌توانید از راه‌های زیر اقدام کنید
 
-- [Tweet me @quii](https://twitter.com/quii)
+- [در توییتر به او پیام بدهید](https://twitter.com/quii)
 - <a rel="me" href="https://mastodon.cloud/@quii">Mastodon</a>
-- [Buy me a coffee](https://www.buymeacoffee.com/quii)
-- [Sponsor me on GitHub](https://github.com/sponsors/quii)
+- [یک قهوه برای او بخرید](https://www.buymeacoffee.com/quii)
+- [در گیت‌هاب اسپانسر او شوید](https://github.com/sponsors/quii)
 
-## Learn test-driven development with Go
+## یادگیری برنامه‌نویسی تست‌محور با گو
 
-* Explore the Go language by writing tests
-* **Get a grounding with TDD**. Go is a good language for learning TDD because it is a simple language to learn and testing is built-in
-* Be confident that you'll be able to start writing robust, well-tested systems in Go
+* زبان گو را با نوشتن تست تجربه کنید
+* **با تست‌نویسی آشنا شوید**. گو برای برنامه‌نویسی تست‌محور بسیار مناسب است زیرا از طرفی یادگیری آن ساده است و از طرف دیگر داخل خود زبان کتابخانه برای تست‌نویسی وجود دارد
+* شما می‌توانید خیالتان راحت باشد که با گو یک کد قابل اطمینان و تست شده را بنویسید
 
-Translations:
+ترجمه‌ها:
 
 - [中文](https://studygolang.gitbook.io/learn-go-with-tests)
 - [Português](https://larien.gitbook.io/aprenda-go-com-testes/)
@@ -29,7 +29,7 @@ Translations:
 - [한국어](https://miryang.gitbook.io/learn-go-with-tests/)
 - [Türkçe](https://halilkocaoz.gitbook.io/go-programlama-dilini-ogren/)
 
-## Background
+## پیش‌زمینه
 
 I have some experience introducing Go to development teams and have tried different approaches as to how to grow a team from some people curious about Go into highly effective writers of Go systems.
 
