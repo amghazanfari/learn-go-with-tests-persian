@@ -56,19 +56,21 @@
 
  بهترین راه با اختلاف این بوده که با خواندن آرام [گو با مثال](https://gobyexample.com/)، مفاهیم پایه‌ای زبان را بشناسیم و به شکل گروهی مسائل آن را بررسی کنیم. این روش بیشتر از «خواندن فلان فصل» دانش‌آموزان را درگیر می‌کرد.
 
-Over time the team gained a solid foundation of the _grammar_ of the language so we could then start to build systems.
+پس از مدتی تیم دانش قابل توجهی از دستورات زبان به دست آورد و ما آماده بودیم که شروع به نوشتن کد کنیم
 
-This to me seems analogous to practicing scales when trying to learn guitar.
+این برای من همچون تمرین موسیقی موقع نواختن گیتار بود
 
-It doesn't matter how artistic you think you are, you are unlikely to write good music without understanding the fundamentals and practicing the mechanics.
+مهم نیست فکر می‌کنی چقدر هنرمند هستی، احتمال اینکه یک آهنگ خوب بسازی بدون آنکه مفاهیم اولیه را فهمیده و تمرین کرده باشی، کم است.
 
-### What works for me
 
-When _I_ learn a new programming language I usually start by messing around in a REPL but eventually, I need more structure.
+### چه راهی برای من جواب می‌دهد
 
-What I like to do is explore concepts and then solidify the ideas with tests. Tests verify the code I write is correct and documents the feature I have learned.
+وقتی من می‌خواهم یک زبان جدید یاد بگیرم شروع به سر و کله زدن با زبان می‌کنم، اما بعد از مدتی نیاز به ساختار بیشتری دارم.
 
-Taking my experience of learning with a group and my own personal way I am going to try and create something that hopefully proves useful to other teams. Learning the fundamentals by writing small tests so that you can then take your existing software design skills and ship some great systems.
+چیزی که دوست دارم انجام بدهم این است که مفاهیم زبان را یاد بگیرم و ایده‌ها را تست کنم. تست‌ها باعث می‌شود مطمئن شوم چیزی که نوشتم درست است و به شکلی آنچه تا به اینجا یاد گرفتم را داکیومنت می‌کند.
+
+با توجه به تجربه‌ای که از یادگیری شخصی و یادگیری گروهی دارم من سعی می‌کنم چیزی بسازم که برای بقیه‌ی تیم‌ها مفید باشد. یادگیری مفاهیم کوچک با نوشتن تست‌های کوچک تا در انتها بتوان با مهارت‌های برنامه‌نویسی موجود یک محصول عالی ساخت.
+
 
 ## این کتاب برای کیست
 
@@ -87,4 +89,4 @@ Taking my experience of learning with a group and my own personal way I am going
 
 * برای مشارکت در این پروژه به [اینجا](https://github.com/quii/learn-go-with-tests) سر بزنید یا [توییت بزنید](https://twitter.com/quii)
 
-[MIT license](https://github.com/quii/learn-go-with-tests/blob/main/LICENSE.md)
+[MIT لایسنس](https://github.com/quii/learn-go-with-tests/blob/main/LICENSE.md)
