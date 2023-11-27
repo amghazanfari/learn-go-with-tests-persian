@@ -11,7 +11,7 @@
 نویسنده‌ این اثر را به شکل رایگان منتشر کرده است اما اگر قصد حمایت از او را دارید می‌توانید از راه‌های زیر اقدام کنید
 
 - [در توییتر به او پیام بدهید](https://twitter.com/quii)
-- <a rel="me" href="https://mastodon.cloud/@quii">Mastodon</a>
+- <a rel="me" href="https://mastodon.cloud/@quii">ماستادون</a>
 - [یک قهوه برای او بخرید](https://www.buymeacoffee.com/quii)
 - [در گیت‌هاب اسپانسر او شوید](https://github.com/sponsors/quii)
 
@@ -31,29 +31,30 @@
 
 ## پیش‌زمینه
 
-I have some experience introducing Go to development teams and have tried different approaches as to how to grow a team from some people curious about Go into highly effective writers of Go systems.
+من تجربه‌ی معرفی زیان گو به تیم‌های برنامه‌نویسی را دارم و راه‌های متفاوتی برای تبدیل افراد کنجکاو یادگیری گو به برنامه‌نویس‌های گو ماهر را امتحان کردم.
 
-### What didn't work
 
-#### Read _the_ book
+### چه راه‌هایی کار نکرده
 
-An approach we tried was to take [the blue book](https://www.amazon.co.uk/Programming-Language-Addison-Wesley-Professional-Computing/dp/0134190440) and every week discuss the next chapter along with the exercises.
+#### خواندن کتاب
 
-I love this book but it requires a high level of commitment. The book is very detailed in explaining concepts, which is obviously great but it means that the progress is slow and steady - this is not for everyone.
+یکی از راه‌ها این بود که  [کتاب آبی](https://www.amazon.co.uk/Programming-Language-Addison-Wesley-Professional-Computing/dp/0134190440) را برداریم و هز هفته یک فصل آن را بخوانیم.
 
-I found that whilst a small number of people would read chapter X and do the exercises, many people didn't.
+من عاشق این کتابم اما این راهکار نیازمند زمان زیادی هست. و این کتاب همه چیز را با جزئیات توضیح داده، هر چند این نقطه قوت کتاب هست اما خواندن أن را کند می‌کند و باعث می‌شود این کتاب مناسب همه نباشد.
 
-#### Solve some problems
+من متوجه شدم تعداد کمی از افراد یک فصل را می‌خوانند و تمرینات آن را انجام می‌دهند.
 
-Katas are fun but they are usually limited in their scope for learning a language; you're unlikely to use goroutines to solve a kata.
+#### حل یک سری تمرین
 
-Another problem is when you have varying levels of enthusiasm. Some people just learn way more of the language than others and when demonstrating what they have done end up confusing people with features the others are not familiar with.
+مسائلی که برای یادگیری استفاده می‌شود خوب است اما محدود هستند، احتمال اینکه شما مسئله‌ای را پیدا کنید که از گوروتین استفاده کند کم است.
 
-This ends up making the learning feel quite _unstructured_ and _ad hoc_.
+مسئله‌ی دیگر وقتی است که سطح علاقه‌ی دانش‌آموزان به موضوع متفاوت است. بعضی‌ها به سرعت مباحث را جلو می‌برند و دانش‌آموزان دیگر که کامل یاد نگرفته‌اند را با مفاهیم پیچیده گیچ می‌کنند.
 
-### What did work
+این موضوع باعث می‌شود فرایند یادگیری با بی‌نظمی همراه باشد
 
-By far the most effective way was by slowly introducing the fundamentals of the language by reading through [go by example](https://gobyexample.com/), exploring them with examples and discussing them as a group. This was a more interactive approach than "read chapter x for homework".
+### چه راهی کار کرد
+
+ بهترین راه با اختلاف این بوده که با خواندن آرام [گو با مثال](https://gobyexample.com/)، مفاهیم پایه‌ای زبان را بشناسیم و به شکل گروهی مسائل آن را بررسی کنیم. این روش بیشتر از «خواندن فلان فصل» دانش‌آموزان را درگیر می‌کرد.
 
 Over time the team gained a solid foundation of the _grammar_ of the language so we could then start to build systems.
 
@@ -69,21 +70,21 @@ What I like to do is explore concepts and then solidify the ideas with tests. Te
 
 Taking my experience of learning with a group and my own personal way I am going to try and create something that hopefully proves useful to other teams. Learning the fundamentals by writing small tests so that you can then take your existing software design skills and ship some great systems.
 
-## Who this is for
+## این کتاب برای کیست
 
-* People who are interested in picking up Go
-* People who already know some Go, but want to explore testing more
+* افرادی که علاقه به یادگیری گو دارند
+* افرادی که گو را بلدند اما می‌خواهند تست‌نویسی در آن را یاد بگیرند
 
-## What you'll need
+## آنچه نیاز دارید
 
-* A computer!
-* [Installed Go](https://golang.org/)
-* A text editor
-* Some experience with programming. Understanding of concepts like `if`, variables, functions etc.
-* Comfortable using the terminal
+* یک کامپیوتر
+* [نصب گو](https://golang.org/)
+* ادیتور متن
+* کمی تجربه‌ی برنامه‌نویسی مانند دانستن مفهوم `if`، متغیرها، توابع و....
+* کار کردن با ترمینال
 
-## Feedback
+## فیدبک
 
-* Add issues/submit PRs [here](https://github.com/quii/learn-go-with-tests) or [tweet me @quii](https://twitter.com/quii)
+* برای مشارکت در این پروژه به [اینجا](https://github.com/quii/learn-go-with-tests) سر بزنید یا [توییت بزنید](https://twitter.com/quii)
 
 [MIT license](https://github.com/quii/learn-go-with-tests/blob/main/LICENSE.md)
