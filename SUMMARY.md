@@ -1,11 +1,11 @@
 # Table of contents
 
-* [Learn Go with Tests](gb-readme.md)
+* [یادگیری گو با تست](gb-readme.md)
 
 ## Go fundamentals
 
-* [Install Go](install-go.md)
-* [Hello, World](hello-world.md)
+* [نصب گو](install-go.md)
+* [سلام، دنیا](hello-world.md)
 * [Integers](integers.md)
 * [Iteration](iteration.md)
 * [Arrays and slices](arrays-and-slices.md)
