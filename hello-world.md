@@ -67,16 +67,17 @@ func TestHello(t *testing.T) {
 }
 ```
 
-## ماژول‌های گو?
+## ماژول‌های گو؟
 
-The next step is to run the tests. Enter `go test` in your terminal. If the tests pass, then you are probably using an earlier version of Go. However, if you are using Go 1.16 or later, then the tests will likely not run at all. Instead, you will see an error message like this in the terminal:
+گام بعدی اجرای تست است. دستور `go test` را در ترمینال بزنید. اگر تست‌ها پاس شد احتمالا دارید از نسخه‌های قدیمی‌تر گو استفاده می‌کنید. اگر از نسخه‌ی ۱.۱۶ یا جدیدتر استفاده می‌کنید پس احتمالا کد شما اصلا اجرا نمی‌شود، و شما چنین خطابب در ترمینال می‌بینید:
+
 
 ```shell
 $ go test
 go: cannot find main module; see 'go help modules'
 ```
 
-What's the problem? In a word, [modules](https://blog.golang.org/go116-module-changes). Luckily, the problem is easy to fix. Enter `go mod init hello` in your terminal. That will create a new file with the following contents:
+مشکل چیسن? اگر بخواهیم در یک کلمه مشکل را بگوییم، مشکل, [ماژول‌ها](https://blog.golang.org/go116-module-changes) هستند. خوشبحتانه راه حل آن ساده است. دستور `go mod init hello` را در ترمینال وارد کنید. این دستور فایلی با محتوای زیر برای شما تولید می‌کند:
 
 ```
 module hello
