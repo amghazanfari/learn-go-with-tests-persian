@@ -1,15 +1,15 @@
-# Install Go, set up environment for productivity
+# نصب گو
 
-The official installation instructions for Go are available [here](https://golang.org/doc/install).
+آموزش رسمی نصب گو در [اینجا](https://golang.org/doc/install) موجود است.
 
-## Go Environment
+## محیط گو
 
-### Go Modules
-Go 1.11 introduced [Modules](https://github.com/golang/go/wiki/Modules). This approach is the default build mode since Go 1.16, therefore the use of `GOPATH` is not recommended.
+### ماژول‌های گو
+گو در نسخه‌ی ۱.۱۱ [ماژول](https://github.com/golang/go/wiki/Modules) را معرفی کرد. از نسخه‌ی ۱.۱۶ این روش پیش‌فرض گو برای بیلد پروژه‌ها است پس بنابراین استفاده از `GOPATH` توصیه نمی‌شود.
 
-Modules aim to solve problems related to dependency management, version selection and reproducible builds; they also enable users to run Go code outside of `GOPATH`.
+ماژول‌ها برای حل مشکلات مربوط به وابستگی‌ها، انتخاب ورژن، و امکان بیلد در محیط‌های مختلف استفاده می‌شوند؛ همچنین آن‌ها این امکان را فراهم می‌کنند که کد خارج از `GOPATH` اجرا شود.
 
-Using Modules is pretty straightforward. Select any directory outside `GOPATH` as the root of your project, and create a new module with the `go mod init` command.
+استفاده از ماژول بسیار ساده است، تنها کافیست یک دایرکتوری خارج از `GOPATH` را به عنوان روت پروژه انتخاب کنید، و با دستور `go mod init` یک ماژول جدید بسازید.
 
 A `go.mod` file will be generated, containing the module path, a Go version, and its dependency requirements, which are the other modules needed for a successful build.
 
