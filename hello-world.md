@@ -29,9 +29,10 @@ func main() {
 
 ## چگونه تست کنیم
 
-How do you test this? It is good to separate your "domain" code from the outside world \(side-effects\). The `fmt.Println` is a side effect \(printing to stdout\) and the string we send in is our domain.
+چگونه جنین چیزی را می‌توان تست کرد؟ خوب است که کدهای «دامنه» را از دنیای بیرون جدا کرد. `fmt.Println` مربوط به دامنه‌ی شما نیست. اما رشته‌ای که می‌فرستیم جزو دامنه‌ی کد ما هست.
 
-So let's separate these concerns so it's easier to test
+پس می‌توان این دو را از هم جدا کرد.
+
 
 ```go
 package main
@@ -46,10 +47,10 @@ func main() {
 	fmt.Println(Hello())
 }
 ```
+ما دوباره یک تابع جدید ساختیم اما این بار پس از تعریف تابع از کلمه‌ی کلیدی `string` استفاده کردیم که یعنی وظیفه‌ی تابع بازگرداندن یک رشته است.
 
-We have created a new function again with `func` but this time we've added another keyword `string` in the definition. This means this function returns a `string`.
+حال یک فایل جدید با نام `hello_test.go` می‌سازیم که در آن تست‌های مربوط به تابغ `Hello` را می‌نویسیم.
 
-Now create a new file called `hello_test.go` where we are going to write a test for our `Hello` function
 
 ```go
 package main
@@ -66,7 +67,7 @@ func TestHello(t *testing.T) {
 }
 ```
 
-## Go modules?
+## ماژول‌های گو?
 
 The next step is to run the tests. Enter `go test` in your terminal. If the tests pass, then you are probably using an earlier version of Go. However, if you are using Go 1.16 or later, then the tests will likely not run at all. Instead, you will see an error message like this in the terminal:
 
