@@ -1,11 +1,11 @@
-# Hello, World
+# سلام دنیا
 
-**[You can find all the code for this chapter here](https://github.com/quii/learn-go-with-tests/tree/main/hello-world)**
+**[شما می‌توانید کدهای این بخش را اینجا ببینید](https://github.com/quii/learn-go-with-tests/tree/main/hello-world)**
 
-It is traditional for your first program in a new language to be [Hello, World](https://en.m.wikipedia.org/wiki/%22Hello,_World!%22_program).
+یک رسم قدیمی است که اولین مسئله‌ی برنامه‌نویسی در یک زبان [Hello, World یا سلام‌ دنیا](https://en.m.wikipedia.org/wiki/%22Hello,_World!%22_program) باشد.
 
-- Create a folder wherever you like
-- Put a new file in it called `hello.go` and put the following code inside it
+- هر جا که می‌خواهید یک فولدر بسازید
+- فایل `hello.go` را ایجاد کنید و محتوای زیر را در آن بنویسید
 
 ```go
 package main
@@ -17,17 +17,17 @@ func main() {
 }
 ```
 
-To run it type `go run hello.go`.
+برای اجرای آن دستور  `go run hello.go` را بزنید.
 
-## How it works
+## نحوه‌ی کار
 
-When you write a program in Go, you will have a `main` package defined with a `main` func inside it. Packages are ways of grouping up related Go code together.
+زمانی که شما یک کد گو می‌نویسید، شما یک بسته‌ی `main` دارید که در آن تابع `main` تعریف شده است. شما می‌توانید کدهای مرتبط به هر بخش را در بسته‌ی خاص خود بگذارید.
 
-The `func` keyword is how you define a function with a name and a body.
+برای تعریف تابع شما از کلمه‌ی کلیدی `func` باید استفاده کنید و بعد از آن نام تابع را بنویسید.
 
-With `import "fmt"` we are importing a package which contains the `Println` function that we use to print.
+با دستور `import "fmt"` ما می‌توانیم از یک بسته که دارای تابع`Println` هست استفاده کنیم.
 
-## How to test
+## چگونه تست کنیم
 
 How do you test this? It is good to separate your "domain" code from the outside world \(side-effects\). The `fmt.Println` is a side effect \(printing to stdout\) and the string we send in is our domain.
 
