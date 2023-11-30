@@ -515,9 +515,8 @@ func greetingPrefix(language string) (prefix string) {
 ```
 
 چند مفهوم جدید:
-
-* In our function signature we have made a _named return value_ `(prefix string)`.
-* This will create a variable called `prefix` in your function.
+* در امضای تابع ما برای مقدار بازگشتی اسم مشخص کردیم `(prefix string)`.
+* این کار یک متغیر به اسم `prefix` در تابع شما ایجاد می‌کند
   * It will be assigned the "zero" value. This depends on the type, for example `int`s are 0 and for `string`s it is `""`.
     * You can return whatever it's set to by just calling `return` rather than `return prefix`.
   * This will display in the Go Doc for your function so it can make the intent of your code clearer.
