@@ -77,69 +77,70 @@ $ go test
 go: cannot find main module; see 'go help modules'
 ```
 
-مشکل چیسن? اگر بخواهیم در یک کلمه مشکل را بگوییم، مشکل, [ماژول‌ها](https://blog.golang.org/go116-module-changes) هستند. خوشبحتانه راه حل آن ساده است. دستور `go mod init hello` را در ترمینال وارد کنید. این دستور فایلی با محتوای زیر برای شما تولید می‌کند:
+مشکل چیست? اگر بخواهیم در یک کلمه مشکل را بگوییم، مشکل, [ماژول‌ها](https://blog.golang.org/go116-module-changes) هستند. خوشبحتانه راه حل آن ساده است. دستور `go mod init hello` را در ترمینال وارد کنید. این دستور فایلی با محتوای زیر برای شما تولید می‌کند:
 
 ```
 module hello
 
 go 1.16
 ```
+این فایل به `go` اطلاعات اساسی مربوط به کد شما را می‌دهد. اگر تصمیم دارید برنامه‌ی خود را به دیگران بدهید، شما هم باید بگویید که کد را از کجا بگیرد، هم اینکه این کد چه نیازمندی‌هایی برای اجرا دارد. در حال حاضر ماژول شما حداقل‌ها را دارد، و فعلا می‌تواند اینگونه باشد. برای آنکه اطلاعات بیشتری درباره‌ی ماژول داشته باشید [می‌توانید به مستندات گو در مورد ماژول مراجعه کنید](https://golang.org/doc/modules/gomod-ref). حالا که تست می‌تواند اجرا شود به سراغ ادامه‌ی کار می‌رویم.
 
-This file tells the `go` tools essential information about your code. If you planned to distribute your application, you would include where the code was available for download as well as information about dependencies. For now, your module file is minimal, and you can leave it that way. To read more about modules, [you can check out the reference in the Golang documentation](https://golang.org/doc/modules/gomod-ref). We can get back to testing and learning Go now since the tests should run, even on Go 1.16.
+در بخش‌های بعدی بخاطر داشته باشید فبل از دستورات `go test` و `go build` باید ابتدا دستور `go mod init SOMENAME‍` را بزنید تا ماژول ساخته شود.
 
-In future chapters you will need to run `go mod init SOMENAME` in each new folder before running commands like `go test` or `go build`.
 
-## Back to Testing
+## بازگشت به تست
 
-Run `go test` in your terminal. It should've passed! Just to check, try deliberately breaking the test by changing the `want` string.
+حالا اگر `go test` را بزنید تست شما باید موفق باشد، برای اینکه مطمئن‌تر باشید، می‌توانید رشته‌ی موجود در `want` را تغییر دهید؛ تست باید خطا بدهد.
 
-Notice how you have not had to pick between multiple testing frameworks and then figure out how to install. Everything you need is built in to the language and the syntax is the same as the rest of the code you will write.
+اگر متوجه شده باشید ما نیازی به نصب فریمورک برای تست کدمان نداریم، در گو خود زبان امکان تست را برای شما فراهم کرده و با همون دستور زبان گو می‌توان تست نوشت.
 
-### Writing tests
+### نوشتن تست
 
-Writing a test is just like writing a function, with a few rules
+نوشتن تست مانند نوشتن تابع هست، فقط باید چند شرط را رعایت کرد.
 
-* It needs to be in a file with a name like `xxx_test.go`
-* The test function must start with the word `Test`
-* The test function takes one argument only `t *testing.T`
-* In order to use the `*testing.T` type, you need to `import "testing"`, like we did with `fmt` in the other file
+* نام فایلی که تست در آن نوشته می‌شود باید به شکل `xxx_test.go` باشد
+* نام تابع تست باید با   `Test` شروع شود
+* تابع تست تنها یک آرگومان می‌گیرد و آن  `t *testing.T` است
+* برای استفاده از `*testing.T` شما نیاز دارید با زدن `import testing`, کتابخانه‌ی مربوط به تست را در کد خود ایمپورت کنید.
 
-For now, it's enough to know that your `t` of type `*testing.T` is your "hook" into the testing framework so you can do things like `t.Fail()` when you want to fail.
+فعلا کافیست بدانید که `t` که از نوع `*testing.T` بود درواقع یک رابط برای صحبت با فریمورک تست هست و می‌توان دستوراتی همچون `()t.Fail` را وارد کرد.
 
-We've covered some new topics:
 
-#### `if`
-If statements in Go are very much like other programming languages.
+ما یک سری دستورات جدید را دیدیم:
 
-#### Declaring variables
+#### `دستور if`
+دستور `if` در زبان گو مانند همین دستور در دیگر زبان‌ها می‌شد
+#### تعریف متغیر
 
-We're declaring some variables with the syntax `varName := value`, which lets us re-use some values in our test for readability.
+ما با دستور `varName := value` یک متغیر جدید تعریف می‌کنیم که به ما اجازه می‌دهد از یک سری مغادیر چندن بار استفاده کنیم تا خوانایی کد بالا برود.
 
-#### `t.Errorf`
 
-We are calling the `Errorf` _method_ on our `t` which will print out a message and fail the test. The `f` stands for format which allows us to build a string with values inserted into the placeholder values `%q`. When you made the test fail it should be clear how it works.
+#### `دستور t.Errorf`
 
-You can read more about the placeholder strings in the [fmt go doc](https://golang.org/pkg/fmt/#hdr-Printing). For tests `%q` is very useful as it wraps your values in double quotes.
+ما متد `Errorf` را که برای `t` تعریف شده صدا می‌زنیم تا به وسیله‌ی آن اعلام کنیم که تست ما موفق نبوده. حرف `f` از کلمه‌ی فرمت گرفته شده که به ما اجازه می‌دهد یک رشته داشته باشیم که به جای `%q` مقدار متغیر را در آن بگذاریم، این باعث می‌شود متن خطای ما خوانا باشد، تا در صورت داشتن خطا مشکل را سریع‌تر بفهمیم.
 
-We will later explore the difference between methods and functions.
+ شما می‌توانید در مورد این مدل کار با رشته در [مستندات گو](https://golang.org/pkg/fmt/#hdr-Printing) بیشتر بخوانید. برای تست استفاده از `%q` بسیار مناسب است چرا که مقدار متغبر را داخل دابل کوتیشن می‌گذارد.
 
-### Go doc
+ما جلوتر به تفاوت تابع و متد می‌پردازیم.
 
-Another quality of life feature of Go is the documentation. You can launch the docs locally by running `godoc -http :8000`. If you go to [localhost:8000/pkg](http://localhost:8000/pkg) you will see all the packages installed on your system.
+### مستندات گو
 
-The vast majority of the standard library has excellent documentation with examples. Navigating to [http://localhost:8000/pkg/testing/](http://localhost:8000/pkg/testing/) would be worthwhile to see what's available to you.
+یکی دیگر از ویژگی‌های ممتاز گو مستندات آن هست شما می‌توانید با زدن دستور `godoc -http :8000` مستندات گو را در سیستم خود داشته باشید. اگر به آدرس [localhost:8000/pkg](http://localhost:8000/pkg) بروید شما تمام بسته‌های نصب شده روی سیستم خود را می‌بینید.
 
-If you don't have `godoc` command, then maybe you are using the newer version of Go (1.14 or later) which is [no longer including `godoc`](https://golang.org/doc/go1.14#godoc). You can manually install it with `go install golang.org/x/tools/cmd/godoc@latest`.
+بیشتر کتابخانه‌های استاندارد گو مستندات عالی‌ای دارند که همراه مثال هست. بد نیست به آدرس [http://localhost:8000/pkg/testing/](http://localhost:8000/pkg/testing/)  بروید و در مستندات مربوط به کتابخانه‌ی تست چرخی بزنید.
 
-### Hello, YOU
+اگر در سیستمتان دستور `godoc` را ندارید احتمالا بخاطر آن است که از نسخه‌های جدیدتر گو استفاده می‌کنید. شما می‌توانید با زدن دستور `go install golang.org/x/tools/cmd/godoc@latest` برنامه‌ی نشان دادن مستندات را نصب کنید.
 
-Now that we have a test we can iterate on our software safely.
+### سلام بر تو
 
-In the last example we wrote the test _after_ the code had been written just so you could get an example of how to write a test and declare a function. From this point on we will be _writing tests first_.
+جالا که تست ما کار می‌کند می‌توانیم خیالمان از بابت امنیت کدمان راحت باشد.
 
-Our next requirement is to let us specify the recipient of the greeting.
+در آخرین مثالمان ما تست را بعد از نوشتن کد اصلی  نوشتیم، تا نگاهی داشته باشیم به چگونگی کارکرد تست. از اینجا به بعد ما تست را قبل از نوشتن کد تابع اصلی می‌نویسیم.
 
-Let's start by capturing these requirements in a test. This is basic test driven development and allows us to make sure our test is _actually_ testing what we want. When you retrospectively write tests there is the risk that your test may continue to pass even if the code doesn't work as intended.
+در گام بعدی می‌بینیم که چگونه نام شخص را موقع سلام کردن مشخص کنیم.
+
+بیایید ابتدا نیازمندی خود را در تست مشخص کنیم. این یک برنامه‌نویس تست محور مقدماتی هست و به ما اجازه می‌دهد تا مطمئن شویم تست ما واقعا چیزی که ما می‌خواهیم را تست می‌کند. گاهی اوقات هنگام کد نوشتن تست شما حتا اگر با خطا هم مواجه باشد موفق است، در این مواقع شما به درستی تست نمی‌کنید. باید مطمئن شوید که تستتان در صورت وجود مشکل خطا بدهد.
 
 ```go
 package main
@@ -155,8 +156,7 @@ func TestHello(t *testing.T) {
 	}
 }
 ```
-
-Now run `go test`, you should have a compilation error
+حال دستور `go test` را بزنید شما باید خطای زمان کامپایل بگیرید
 
 ```text
 ./hello_test.go:6:18: too many arguments in call to Hello
@@ -164,11 +164,12 @@ Now run `go test`, you should have a compilation error
     want ()
 ```
 
-When using a statically typed language like Go it is important to _listen to the compiler_. The compiler understands how your code should snap together and work so you don't have to.
+وقتی با یک زبان برنامه‌نویسی ایستا (Statically typed programming languages) مانند گو سروکار دارید، بهتر است به حرف کامپایلر گوش کنید، در این زیان‌ها کامپایلر می‌داند کد چگونه کار می‌کند تا شما مجبور نباشید آن را بدانید.
 
-In this case the compiler is telling you what you need to do to continue. We have to change our function `Hello` to accept an argument.
+در اینجا کامپایلر به شما می‌گوید نیاز دارید چه تغییری بدهید تا کد درست کار کند، ما باید تابع `Hello` را تغییر دهیم تا یک آرگومان بگیرد.
 
-Edit the `Hello` function to accept an argument of type string
+
+تابع `Hello` را به شکل زیر تغییر دهید تا یک آرگومان بگیرد.
 
 ```go
 func Hello(name string) string {
@@ -176,7 +177,7 @@ func Hello(name string) string {
 }
 ```
 
-If you try and run your tests again your `hello.go` will fail to compile because you're not passing an argument. Send in "world" to make it compile.
+اگر دوباره تست خود را اجرا کنید خطا می‌گیرید چرا که هنگام صدا زدن تابع `Hello` باید یک آرگومان هم وارد کنید.
 
 ```go
 func main() {
@@ -184,15 +185,14 @@ func main() {
 }
 ```
 
-Now when you run your tests you should see something like
-
+حالا موقع اجرای تست چنین پیامی باید ببینید
 ```text
 hello_test.go:10: got 'Hello, world' want 'Hello, Chris''
 ```
 
-We finally have a compiling program but it is not meeting our requirements according to the test.
+بالاخره کد ما قابل تست شد اما باز هم تست موفقیت‌آمیز نبود.
 
-Let's make the test pass by using the name argument and concatenate it with `Hello,`
+حال وقت آن است که با تغییر تابع `Hello` کاری کنیم که نتیجه‌ی مقبول ما را بدهد.
 
 ```go
 func Hello(name string) string {
@@ -200,27 +200,25 @@ func Hello(name string) string {
 }
 ```
 
-When you run the tests they should now pass. Normally as part of the TDD cycle we should now _refactor_.
+حالا وقتی تست را اجرا کنیم تست با موفقیت پاس می‌شود. براساس چرخه‌ی برنامه‌نویسی تست محور حالا وقت ری‌فکتور می‌باشد.
 
-### A note on source control
+### بادداشتی برای استفاده از سورس کنترل
 
-At this point, if you are using source control \(which you should!\) I would
-`commit` the code as it is. We have working software backed by a test.
+در این نقطه اگر از یک سورس کنترل استفاده می‌کنید(که باید بکنید) بهتر است کد خود را `commit` کنید چرا که در این نقطه ما یک نرم‌افزار قابل اجرا داریم که تست هم برای آن نوشته شده.
 
-I _wouldn't_ push to main though, because I plan to refactor next. It is nice
-to commit at this point in case you somehow get into a mess with refactoring - you can always go back to the working version.
+البته من بنا ندارم کد را به مخزن بفرستم چراکه می‌خواهم آن را ری‌فکتور کنم. ولی بهتر است تغییرات را کامیت کنید که اگر هنگام ری‌فکتور به مشکل خوردید به راحتی به ورژن موفق قبلی برگردید.
 
-There's not a lot to refactor here, but we can introduce another language feature, _constants_.
+چیز خیلی زیادی برای زی‌فکتور کردن نیست اما بد نیست اینجا با مفهوم ثابت‌ها آشنا شوید.
 
-### Constants
+### ثابت‌ها
 
-Constants are defined like so
+ثابت‌ها مانند زیر تعریف می‌شوند.
 
 ```go
 const englishHelloPrefix = "Hello, "
 ```
 
-We can now refactor our code
+حالا ما می‌توانیم کد خود را ری‌فکتور کنیم
 
 ```go
 const englishHelloPrefix = "Hello, "
