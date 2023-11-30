@@ -408,8 +408,7 @@ func Hello(name string, language string) string {
 
 حالا تست‌ها باید پاس شوند.
 
-
-Now it is time to _refactor_. You should see some problems in the code, "magic" strings, some of which are repeated. Try and refactor it yourself, with every change make sure you re-run the tests to make sure your refactoring isn't breaking anything.
+حالا زمان ری‌فکتور است. شما باید متوجه بعضی مشکلات بشوید، رشته‌های جادویی که بعضی از آن‌ها چندین بار تکرار شده. سعی کنید خودتان کد را ری‌فکتور کنید و مطمئن بشید هر بار پس از ری‌فکتور تست‌ها را اجرا کنید تا چیزی خراب نشده باشد.
 
 ```go
 	const spanish = "Spanish"
@@ -428,13 +427,13 @@ Now it is time to _refactor_. You should see some problems in the code, "magic" 
 	}
 ```
 
-### French
+### فرانسوی
 
-* Write a test asserting that if you pass in `"French"` you get `"Bonjour, "`
-* See it fail, check the error message is easy to read
-* Do the smallest reasonable change in the code
+* یک تست بنویسید که اگر زبان `"French"` وارد شد برای سلام `"Bonjour, "` بگیرید
+* ببینید خطا می‌خورد، و مطمئن شوید متن خطا خوانا است
+* کمترین تغییر قابل قبول را در کد بدهید تا تست‌ها پاس شود
 
-You may have written something that looks roughly like this
+احتمالا چیزی که می‌نویسید مانند زیر باشد
 
 ```go
 func Hello(name string, language string) string {
@@ -452,9 +451,10 @@ func Hello(name string, language string) string {
 }
 ```
 
-## `switch`
+## `دستور switch`
 
-When you have lots of `if` statements checking a particular value it is common to use a `switch` statement instead. We can use `switch` to refactor the code to make it easier to read and more extensible if we wish to add more language support later
+وقتی کلی دستور `if` دارید معمولا بهتر است به جای آن از دستور `switch` استفاده کنید. ما می‌توانید کد را به شکلی ری‌فکتور کنیم که از این دستور استفاده شود تا خوانایی کد بیشتر شود و در آینده به راحتی از زبان‌های بیشتری بشود پشتیبانی کرد.
+
 
 ```go
 func Hello(name string, language string) string {
@@ -475,11 +475,12 @@ func Hello(name string, language string) string {
 }
 ```
 
-Write a test to now include a greeting in the language of your choice and you should see how simple it is to extend our _amazing_ function.
+حالا یک زبان به انتخاب خودتان اضافه کنید تا ببینید اضافه شدن زبان جدید چقدر راحت‌تر شده است.
 
-### one...last...refactor?
+### یک...ری‌فکتور...دیگر؟
 
-You could argue that maybe our function is getting a little big. The simplest refactor for this would be to extract out some functionality into another function.
+ممکن است بگویید که تابع ما کمی بزرگ شده است. ساده‌ترین ری‌فکتور این است که بخشی از کار را به تابع دیگری منتقل کنیم
+
 
 ```go
 
@@ -513,7 +514,7 @@ func greetingPrefix(language string) (prefix string) {
 }
 ```
 
-A few new concepts:
+چند مفهوم جدید:
 
 * In our function signature we have made a _named return value_ `(prefix string)`.
 * This will create a variable called `prefix` in your function.
