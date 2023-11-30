@@ -228,15 +228,15 @@ func Hello(name string) string {
 }
 ```
 
-After refactoring, re-run your tests to make sure you haven't broken anything.
+بعد از ری‌فکتور کردن یک بار دیگر تست‌ها را اجرا کنید تا مطمئن شوید چیزی خراب نشده باشد.
 
-It's worth thinking about creating constants to capture the meaning of values and sometimes to aid performance.
+خوب است کمی درباره‌ی ساختن ثابت فکر کنید تا کاربرد آن در برنامه و حتا پرفورمنس را بهتر درک کنید.
 
-## Hello, world... again
+## سلام دنیا...دوباره
 
-The next requirement is when our function is called with an empty string it defaults to printing "Hello, World", rather than "Hello, ".
+خوب است در گام بعدی کاری کنیم که اگر یک رشته‌ی خالی به کد دادیم به ما «Hello, World» تحویل دهد نه «Hello, »
 
-Start by writing a new failing test
+کارمان را با نوشتن تست جدید شروع می‌کنیم
 
 ```go
 func TestHello(t *testing.T) {
@@ -259,11 +259,12 @@ func TestHello(t *testing.T) {
 }
 ```
 
-Here we are introducing another tool in our testing arsenal, subtests. Sometimes it is useful to group tests around a "thing" and then have subtests describing different scenarios.
+حالا ما یک مفهوم دیگر را معرفی می‌کنیم، زیر مجموعه‌ها. گاهی حوب است که تست‌هایمان را حول یک چیز گروه‌بندی کنیم و بعد یک زیرمجموعه داشته باشیم که سناریوهای متقاوت از آن چیز را تست کند.
 
-A benefit of this approach is you can set up shared code that can be used in the other tests.
+خوبی این روش این است که شما می‌توانید یک بخش از کد را به اشتراک بگذارید تا در دیگر تست‌ها از آن استفاده شود.
 
-While we have a failing test, let's fix the code, using an `if`.
+حالا بیایید با استفاده از `if` کاری کنیم تستمان درست کار کند.
+
 
 ```go
 const englishHelloPrefix = "Hello, "
@@ -275,14 +276,13 @@ func Hello(name string) string {
 	return englishHelloPrefix + name
 }
 ```
+حالا اگر تست‌های خود را اجرا کنیم باید ببینیم که تست‌ها موفق هستند، و چیزی خراب نشده.
 
-If we run our tests we should see it satisfies the new requirement and we haven't accidentally broken the other functionality.
+مهم هست که تست‌های شما به شکل شفاف هر آنچه مورد نیاز هست را تست کرده باشد. اما این موضوع باعث تکرار کردن در کد می‌شود.
 
-It is important that your tests _are clear specifications_ of what the code needs to do. But there is repeated code when we check if the message is what we expect.
+ری‌فکتور تنها برای کد اصلی نیست!
 
-Refactoring is not _just_ for the production code!
-
-Now that the tests are passing, we can and should refactor our tests.
+جالا که تست‌ها موفق هستند، خوب است که خود تست‌ها را ری‌فکتور کنیم
 
 ```go
 func TestHello(t *testing.T) {
@@ -308,9 +308,9 @@ func assertCorrectMessage(t testing.TB, got, want string) {
 }
 ```
 
-What have we done here?
+ما اینجا چه کار کردیم؟
 
-We've refactored our assertion into a new function. This reduces duplication and improves readability of our tests. We need to pass in `t *testing.T` so that we can tell the test code to fail when we need to.
+ما بخشی از کد را که چند بار تکرار می‌شد، در یک تابع مجزا گذاشتیم، از این پس هر وقت خواستیم برابری دو رشته برای تست را بسنجیم، این تابع را صدا می‌زنیم.
 
 For helper functions, it's a good idea to accept a `testing.TB` which is an interface that `*testing.T` and `*testing.B` both satisfy, so you can call helper functions from a test, or a benchmark (don't worry if words like "interface" mean nothing to you right now, it will be covered later).
 
