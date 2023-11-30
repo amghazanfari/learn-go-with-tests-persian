@@ -312,41 +312,42 @@ func assertCorrectMessage(t testing.TB, got, want string) {
 
 ما بخشی از کد را که چند بار تکرار می‌شد، در یک تابع مجزا گذاشتیم، از این پس هر وقت خواستیم برابری دو رشته برای تست را بسنجیم، این تابع را صدا می‌زنیم.
 
-For helper functions, it's a good idea to accept a `testing.TB` which is an interface that `*testing.T` and `*testing.B` both satisfy, so you can call helper functions from a test, or a benchmark (don't worry if words like "interface" mean nothing to you right now, it will be covered later).
+برای این دست توابع کمکی، خوب است که از `testing.TB` به عنوان آرگومان استفاده کنیم، این یک اینترفیس است که جای هر دوی `*testing.T` و `*testing.B` کار می‌کند و ما هم برای تست و هم برای بنچمارک می‌توانیم از آن استفاده کنیم.(نگران نباشید اگر معنی کلماتی مانند اینترفیس را نمی‌دانید. در آینده به آن‌ها می‌پردازیم).
 
-`t.Helper()` is needed to tell the test suite that this method is a helper. By doing this when it fails the line number reported will be in our _function call_ rather than inside our test helper. This will help other developers track down problems easier. If you still don't understand, comment it out, make a test fail and observe the test output. Comments in Go are a great way to add additional information to your code, or in this case, a quick way to tell the compiler to ignore a line. You can comment out the `t.Helper()` code by adding two forward slashes `//` at the beginning of the line. You should see that line turn grey or change to another color than the rest of your code to indicate it's now commented out.
+تابع `t.Helper()` برای این نیاز است که بگوییم این یک تابع کمکی است. تا در صورت وجود خطا شماره‌ی خط خطا را به گونه‌ای می‌دهد انگار که داخل تابع  تست به مشکل خورده است. اگر متوجه نمی‌شوید کاری کنید تست خطا بدهد، و خط `t.Helper()` را کامنت کنید تا ببینید متن خطا به چه شکل است. کامنت راهی فوق‌العاده برای اضافه کردن اطلاعات بیشتر به کد هست، یا در این مورد خاص حذف کردن یک خط از کد بدون اینکه واقعا کد را حذف کنید. برای این کار دو اسلش به ابتدای خط اضافه کنید، احتمالا رنگ کد در ادیتورتان تغییر کند.
 
-### Back to source control
 
-Now we are happy with the code I would amend the previous commit so we only check in the lovely version of our code with its test.
+### بازگشت به سورس کنترل
 
-### Discipline
+حالا ما از نتیجه‌ی تغییراتمان راضی هستیم پس بهتر است همینجا دوباره کد را کامیت کنیم.
 
-Let's go over the cycle again
+### نظم
 
-* Write a test
-* Make the compiler pass
-* Run the test, see that it fails and check the error message is meaningful
-* Write enough code to make the test pass
-* Refactor
+بیاییم یک دور چرحه را مرور کنیم
 
-On the face of it this may seem tedious but sticking to the feedback loop is important.
+* نوشتن تست
+* حذف خطاهای کامپایلر
+* اجرای تست و اطمینان از گرفتن خطا، چک کردن معنادار بودن متن خطا
+* نوشتن کد کافی برای پاس شدن تست
+* ری‌فکتور
 
-Not only does it ensure that you have _relevant tests_, it helps ensure _you design good software_ by refactoring with the safety of tests.
+شاید به نظر این کارها مسخره باشد، اما تعهد به چرخه بسیار مهم است.
 
-Seeing the test fail is an important check because it also lets you see what the error message looks like. As a developer it can be very hard to work with a codebase when failing tests do not give a clear idea as to what the problem is.
+نه تنها باعث می‌شود مطمئن شوید تست‌های مناسبی نوشته‌اید، بلکه کمک می‌کند یک ساختار خوب داشته باشید و با امنیت ری‌فکتور کنید.
 
-By ensuring your tests are _fast_ and setting up your tools so that running tests is simple you can get in to a state of flow when writing your code.
+اینکه بگذارید تست خطا بدهد مهم است، چرا که می‌بینید متن خطای شما به چه شکلی است. اگر نتوانید خطا را به درستی یفهمید کار شما به عنوان برنامه‌نویس بسیار سخت می‌شود.
 
-By not writing tests you are committing to manually checking your code by running your software which breaks your state of flow and you won't be saving yourself any time, especially in the long run.
+وقتی از سرعت تست‌هایتان مطمئن شدید، و ابزارهای مورد نیاز برای اجرای راحت‌تر تست‌ها را آماده کردید. شما به راحتی می‌توانید این چرحه را تکرار کنید.
 
-## Keep going! More requirements
+با ننوشتن تست شما باید به شکل دستی از درستی کدتان مطمئن شوید و این در بلند مدت به شدت از شما زمان می‌برد
 
-Goodness me, we have more requirements. We now need to support a second parameter, specifying the language of the greeting. If a language is passed in that we do not recognise, just default to English.
+##ادامه بدهید! نیازمندی‌های بیشتر
 
-We should be confident that we can use TDD to flesh out this functionality easily!
+حالا نیازمندی‌های ما بیشتر شده ما نیاز داریم یک آرگومان دیگر را هم دریافت کنیم، ما باید زبانی که با آن به شخص سلام می‌دهیم را هم مشخص کنیم، و اگر زبانی که داده شده را در لیست زبان‌هایمان نداریم به همان انگلیسی سلام کنیم.
 
-Write a test for a user passing in Spanish. Add it to the existing suite.
+ما باید خیالمان راحت باشد که با برنامه‌نویسی تست محور به راحتی و با اطمینان می‌توان این خاصیت را اضافه کرد.
+
+یک تست برای زبان اسپانیایی اضافه می‌کنیم.
 
 ```go
 	t.Run("in Spanish", func(t *testing.T) {
@@ -356,7 +357,8 @@ Write a test for a user passing in Spanish. Add it to the existing suite.
 	})
 ```
 
-Remember not to cheat! _Test first_. When you try and run the test, the compiler _should_ complain because you are calling `Hello` with two arguments rather than one.
+یادتان باشد چرخه را دور نزنید، اول تست می‌نویسیم. وقتی سعی می‌کنید تست را اجرا کنیپ کامپایلر خطا می‌دهد چرا که سعی دارید با دو آرگومان `Hello` را صدا بزنید.
+
 
 ```text
 ./hello_test.go:27:19: too many arguments in call to Hello
@@ -364,7 +366,7 @@ Remember not to cheat! _Test first_. When you try and run the test, the compiler
     want (string)
 ```
 
-Fix the compilation problems by adding another string argument to `Hello`
+با اضافه کردن یک آرگومان دیگر به `Hello` این مشکل را برطرف کنید
 
 ```go
 func Hello(name string, language string) string {
@@ -374,8 +376,8 @@ func Hello(name string, language string) string {
 	return englishHelloPrefix + name
 }
 ```
+وقتی سعی کنید تست‌ها را اجرا کنید این بار خطا می‌دهد که دیگر تست‌های موجود به اندازه‌ی کافی آرگومان ندارند.
 
-When you try and run the test again it will complain about not passing through enough arguments to `Hello` in your other tests and in `hello.go`
 
 ```text
 ./hello.go:15:19: not enough arguments in call to Hello
@@ -383,14 +385,14 @@ When you try and run the test again it will complain about not passing through e
     want (string, string)
 ```
 
-Fix them by passing through empty strings. Now all your tests should compile _and_ pass, apart from our new scenario
+با اضافه کردن یک رشته‌ی خالی به آرگومان‌های تست‌های دیگر مشکل آن‌ها را برطرف کنید، حالا همه‌ی تست‌ها باید پاس شوند به جز آخرین تست.
+
 
 ```text
 hello_test.go:29: got 'Hello, Elodie' want 'Hola, Elodie'
 ```
 
-We can use `if` here to check the language is equal to "Spanish" and if so change the message
-
+ما از یک `if` استفاده می‌کنیم که اگر زبان اسپانیایی بود کلمه‌ی سلام را به زبان اسپانیایی بنویسد
 ```go
 func Hello(name string, language string) string {
 	if name == "" {
@@ -404,7 +406,8 @@ func Hello(name string, language string) string {
 }
 ```
 
-The tests should now pass.
+حالا تست‌ها باید پاس شوند.
+
 
 Now it is time to _refactor_. You should see some problems in the code, "magic" strings, some of which are repeated. Try and refactor it yourself, with every change make sure you re-run the tests to make sure your refactoring isn't breaking anything.
 
