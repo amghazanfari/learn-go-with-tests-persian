@@ -1,8 +1,8 @@
-# Table of contents
+# فهرست
 
 * [یادگیری گو با تست](gb-readme.md)
 
-## Go fundamentals
+## اصول گو
 
 * [نصب گو](install-go.md)
 * [سلام، دنیا](hello-world.md)
@@ -12,13 +12,13 @@
 * [ساختار, متد و اینترفیس](structs-methods-and-interfaces.md)
 * [پوینتر و خطا](pointers-and-errors.md)
 * [مپ](maps.md)
-* [Dependency Injection](dependency-injection.md)
-* [Mocking](mocking.md)
-* [Concurrency](concurrency.md)
-* [Select](select.md)
-* [Reflection](reflection.md)
-* [Sync](sync.md)
-* [Context](context.md)
+* [تزریق وابستگی](dependency-injection.md)
+* [تقلید](mocking.md)
+* [همزمانی](concurrency.md)
+* [دستور Select](select.md)
+* [انعکاس](reflection.md)
+* [کتابخانه‌ی Sync](sync.md)
+* [کتابخانه‌ی Context](context.md)
 * [Intro to property based tests](roman-numerals.md)
 * [Maths](math.md)
 * [Reading files](reading-files.md)
