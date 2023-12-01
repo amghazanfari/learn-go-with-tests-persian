@@ -1,12 +1,13 @@
 # اعداد صحیح
 
-**[You can find all the code for this chapter here](https://github.com/quii/learn-go-with-tests/tree/main/integers)**
+**[شما می‌توانید کدهای این بخش را اینجا ببینید](https://github.com/quii/learn-go-with-tests/tree/main/integers)**
 
-Integers work as you would expect. Let's write an `Add` function to try things out. Create a test file called `adder_test.go` and write this code.
+اعداد صحیح همانطور که انتظار دارید کار می‌کنند. بیایید یک تابع `Add` بنویسیم تا این اعداد را بررسی کنیم. یک فایل تست با نام `adder_test.go` بسازید تا تست‌ها را در آن بنویسیم.
 
-**Note:** Go source files can only have one `package` per directory. Make sure that your files are organised into their own packages. [Here is a good explanation on this.](https://dave.cheney.net/2014/12/01/five-suggestions-for-setting-up-a-go-project) 
 
-Your project directory might look something like this:
+**یادداشت:** گو به شکلی هست که در هر فولدر تنها یک بسته می‌تواند باشد برای اطلاعات بیشتر می‌توانید به. [اینجا](https://dave.cheney.net/2014/12/01/five-suggestions-for-setting-up-a-go-project) مراجعه کنید.
+
+ساختار پروژه‌ی شما باید شبیه به شکل زیر باشد
 
 ```
 learnGoWithTests
@@ -22,7 +23,7 @@ learnGoWithTests
     |- README.md
 ```
 
-## Write the test first
+## اول، نوشتن تست
 
 ```go
 package integers
@@ -38,22 +39,21 @@ func TestAdder(t *testing.T) {
 	}
 }
 ```
+اگر متوجه شده باشید ما به جای `%q` از `%d` استفاده می‌کنیم. این بخاطر این است که می‌خواهیم به جای رشته از عدد صحیح استفاده کنیم.
 
-You will notice that we're using `%d` as our format strings rather than `%q`. That's because we want it to print an integer rather than a string.
+و همینطور نکته‌ی دیگر این هست که ما از بسته‌ی main استفاده نمی‌کنیم و بسته‌ی جدید integers نام دارد، و همانطور که از نامش مشخص است این بسته برای کار با اعداد صحیح است.
 
-Also note that we are no longer using the main package, instead we've defined a package named `integers`, as the name suggests this will group functions for working with integers such as `Add`.
+## تست را اجرا کنید
 
-## Try and run the test
+تست را با دستور `go test` اجرا کنید
 
-Run the test `go test`
-
-Inspect the compilation error
+خطای زمان کامپایل را بررسی کنید
 
 `./adder_test.go:6:9: undefined: Add`
 
-## Write the minimal amount of code for the test to run and check the failing test output
+## کمترین میزان کد برای ران شدن تست و دیدن خطای تست را بنویسید
 
-Write enough code to satisfy the compiler _and that's all_ - remember we want to check that our tests fail for the correct reason.
+به اندازه‌ای تست بنویسید که خطای کامپایل برطرف شود و نه بیشتر، به یاد داشته باشید که ما به دلیل موجه‌ای می‌خواهیم که تستمان خطا بدهد
 
 ```go
 package integers
@@ -63,17 +63,17 @@ func Add(x, y int) int {
 }
 ```
 
-When you have more than one argument of the same type \(in our case two integers\) rather than having `(x int, y int)` you can shorten it to `(x, y int)`.
+زمانی که بیش از یک متغیر از یک نوع دارید (برای مورد ما دو متغیر int) می‌توانیم به جای نوشتن به این شکل `(x int, y int)` از فرم کوتاه شده‌ی آن استفاده کنیم `(x, y int)`.
 
-Now run the tests and we should be happy that the test is correctly reporting what is wrong.
+حالا تست را اجرا کنید، در اینجا همانطور که انتظار می‌رفت متن خطا را می‌بینیم.
 
 `adder_test.go:10: expected '4' but got '0'`
 
-If you have noticed we learnt about _named return value_ in the [last](hello-world.md#one...last...refactor?) section but aren't using the same here. It should generally be used when the meaning of the result isn't clear from context, in our case it's pretty much clear that `Add` function will add the parameters. You can refer [this](https://github.com/golang/go/wiki/CodeReviewComments#named-result-parameters) wiki for more details.
+اگر به خاطر داشته باشید در فصل قبلی در [اینجا](hello-world.md#one...last...refactor?) با مفهوم متغیر  بازگشتی دارای نام آشنا شدیم، اما اینجا از آن استفاده نکردیم. این متغیر زمانی استفاده می‌شود که معنی مقدار بازگشتی به درستی از روی خود تابع قابل فهم نیست، اما در این مورد تقریبا مشخص است که چه چیزی می‌خواهیم برای اطلاعات بیشتر به [این](https://github.com/golang/go/wiki/CodeReviewComments#named-result-parameters) ویکی مراجعه کنید.
 
-## Write enough code to make it pass
+## نوشتن کد به اندازه‌ای که تست‌ها پاس شوند
 
-In the strictest sense of TDD we should now write the _minimal amount of code to make the test pass_. A pedantic programmer may do this
+تو سخت‌گیرانه‌ترین حالت برنامه‌نویسی تست محور ما باید کمترین کد ممکن برای اجرای تست را بنویسیم. یک برنامه‌نویسی که مو را از ماست بیرون می‌کشد ممکن است چنین چیزی بنویسد
 
 ```go
 func Add(x, y int) int {
@@ -81,31 +81,30 @@ func Add(x, y int) int {
 }
 ```
 
-Ah hah! Foiled again, TDD is a sham right?
+با این می‌شود تست را پاس کرد، در صورتی که درست نیست. آیا مشکل از این روش است؟
 
-We could write another test, with some different numbers to force that test to fail but that feels like [a game of cat and mouse](https://en.m.wikipedia.org/wiki/Cat_and_mouse).
+ما می‌توانیم اعداد دیگری بگذارید و تست را لا آن اجرا کنیم اما این دنباله قرار نیست پایان پیدا کند.
 
-Once we're more familiar with Go's syntax I will introduce a technique called *"Property Based Testing"*, which would stop annoying developers and help you find bugs.
+زمانی که بیشتر با سینتکس گو آشنا شدیم، من تست ویژگی محور را معرفی خواهم کرد، که به این کار خاتمه می‌دهد و به شما کمک می‌کند باگ را پیدا کنید.
 
-For now, let's fix it properly
-
+فعلا اجازه دهید به روش درستی این مشکل را حل کنیم
 ```go
 func Add(x, y int) int {
 	return x + y
 }
 ```
 
-If you re-run the tests they should pass.
+اگر دوباره تست را اجرا کنید باید پاس شود
 
-## Refactor
+## ری‌فکتور
 
-There's not a lot in the _actual_ code we can really improve on here.
+چیز مهمی را نمی‌توان اینجا بهبود بخشید
 
-We explored earlier how by naming the return argument it appears in the documentation but also in most developer's text editors.
+ما قبلا دیدیم که چگونه با نام‌گذاری مقدار بازگشتی تابع به خوانایی بیشتر کد کمک می‌کنیم.
 
-This is great because it aids the usability of code you are writing. It is preferable that a user can understand the usage of your code by just looking at the type signature and documentation.
+این عالی است چرا که کمک می‌کند کد شما به درستی استفاده شود. خوب است که کاربر با نگاه کردن به تابعتان بداند کاربرد تابع چیست.
 
-You can add documentation to functions with comments, and these will appear in Go Doc just like when you look at the standard library's documentation.
+شما می‌توانید با کامنت گذاری کاربرد تابع مورد نظر را مستند کنید.
 
 ```go
 // Add takes two integers and returns the sum of them.
@@ -114,17 +113,17 @@ func Add(x, y int) int {
 }
 ```
 
-### Examples
+### مثال
 
-If you really want to go the extra mile you can make [examples](https://blog.golang.org/examples). You will find a lot of examples in the documentation of the standard library.
+اگر می‌خواهید سنگ تمام بگذارید می‌توانید [مثال](https://blog.golang.org/examples) بسازید. شما مثال‌های زیادی در داکیومنت گو می‌بینید
 
-Often code examples that can be found outside the codebase, such as a readme file often become out of date and incorrect compared to the actual code because they don't get checked.
+معمولا کدهایی که برای نمونه در خارج از سورس کد هستند، مانند نمونه‌ی داخل readme، به دلیل آپدیت نشدن بعد از مدتی منسوخ می‌شوند.
 
-Go examples are executed just like tests so you can be confident examples reflect what the code actually does.
+مثال در گو همچون تست اجرا می‌شود پس شما می‌توانید از درستی آن مطمئن باشید.
 
-Examples are compiled \(and optionally executed\) as part of a package's test suite.
+مثال به عنوان بخشی از تست کامپایل می‌شود(و گاهی اوقات اجرا).
 
-As with typical tests, examples are functions that reside in a package's `_test.go` files. Add the following `ExampleAdd` function to the `adder_test.go` file.
+مثال مانند تست در فایل تست قرار می‌گیرد و تابع آن به جای `Test` با `Example` شروع می‌شود.
 
 ```go
 func ExampleAdd() {
@@ -134,11 +133,11 @@ func ExampleAdd() {
 }
 ```
 
-(If your editor doesn't automatically import packages for you, the compilation step will fail because you will be missing `import "fmt"` in `adder_test.go`. It is strongly recommended you research how to have these kind of errors fixed for you automatically in whatever editor you are using.)
+(اگر ادیتور شما به شکل خودکار بسته‌ها رادر کدتان ایمپورت نمی‌کند احتمالا شما بخاطر نبود خط `import "fmt"` در `adder_test.go` به خطا می‌خورید.  بهتر است این مورد را پیگیری کنید و این قابلیت را به ادیتور خود اضافه کنید.)
 
-If your code changes so that the example is no longer valid, your build will fail.
+اگر کدتان جوری تغییر کند که مثال دیگر قابل استفاده نباشد کد شما بیلد نمی‌شود.
 
-Running the package's test suite, we can see the example function is executed with no further arrangement from us:
+زمانی که تست‌ها را اجرا می‌کنیم می‌بینیم که مثال‌ها هم در کنار تست اجرا می‌شود.
 
 ```bash
 $ go test -v
@@ -148,21 +147,21 @@ $ go test -v
 --- PASS: ExampleAdd (0.00s)
 ```
 
-Please note that the example function will not be executed if you remove the comment `// Output: 6`. Although the function will be compiled, it won't be executed.
+به یاد داشته باشید که اگر مقدار `// Output: 6` را وارد نکنید مثال شما اجرا نمی‌شود. البته تابع همیشه کامپایل می‌شود در این مورد تنها اجرا نمی‌شود.
 
-By adding this code the example will appear in the documentation inside `godoc`, making your code even more accessible.
+با اضافه کردن مثال، تابع نوشته شده در `godoc`, دیده خواهد شد
 
-To try this out, run `godoc -http=:6060` and navigate to `http://localhost:6060/pkg/`
+برای دیدن آن دستور `godoc -http=:6060` را وارد کنید و به آدرس روبرو بروید `http://localhost:6060/pkg/`
 
-Inside here you'll see a list of all the packages and you'll be able to find your example documentation.
+در اینجا لیستی از مستندات می‌بینید که مستندات بسته‌ی شما هم در آن است.
 
-If you publish your code with examples to a public URL, you can share the documentation of your code at [pkg.go.dev](https://pkg.go.dev/). For example, [here](https://pkg.go.dev/github.com/quii/learn-go-with-tests/integers/v2) is the finalised API for this chapter. This web interface allows you to search for documentation of standard library packages and third-party packages.
+اگر شما کدهای خود را با مثال در یک آدرس عمومی منتشر کنید, می‌توانید مستندات خود را در [pkg.go.dev](https://pkg.go.dev/) ببینید. برای مثال در [اینجا](https://pkg.go.dev/github.com/quii/learn-go-with-tests/integers/v2) مستندات نهایی کد مربوط به این درس را می‌توانید ببینید.
 
-## Wrapping up
+## جمع‌بندی
 
-What we have covered:
+مسائلی که تا به اینجا بررسی کردیم:
 
-* More practice of the TDD workflow
-* Integers, addition
-* Writing better documentation so users of our code can understand its usage quickly
-* Examples of how to use our code, which are checked as part of our tests
+* تمرین بیشتر در حوزه‌ی برنامه‌نویسی تست محور
+* اعداد صحیح و جمع کردن
+* نوشتن مستندات بهتر تا دیگران کد ما را سریع‌تر بفهمند
+* استفاده از مثال برای فهمیدن بهتر کد
