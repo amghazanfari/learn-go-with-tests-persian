@@ -1,4 +1,4 @@
-<div align="right" dir="auto">
+<div align="right" dir="rtl">
 
 
 # یادگیری گو با تست
