@@ -517,32 +517,32 @@ func greetingPrefix(language string) (prefix string) {
 چند مفهوم جدید:
 * در امضای تابع ما برای مقدار بازگشتی اسم مشخص کردیم `(prefix string)`.
 * این کار یک متغیر به اسم `prefix` در تابع شما ایجاد می‌کند
-  * It will be assigned the "zero" value. This depends on the type, for example `int`s are 0 and for `string`s it is `""`.
-    * You can return whatever it's set to by just calling `return` rather than `return prefix`.
-  * This will display in the Go Doc for your function so it can make the intent of your code clearer.
-* `default` in the switch case will be branched to if none of the other `case` statements match.
-* The function name starts with a lowercase letter. In Go, public functions start with a capital letter and private ones start with a lowercase. We don't want the internals of our algorithm to be exposed to the world, so we made this function private.
-* Also, we can group constants in a block instead of declaring them each on their own line. It's a good idea to use a line between sets of related constants for readability.
+  * مقدار این متغیر صفر می‌باشد، اینکه صفر چه باشد براساس نوع متغیر مشخص می‌شود مثلا `int` عدد صفر است و `string` رشته‌ی خالی
+    * شما تنها با نوشتن عبارت `return` مقدار مورد نظر را برمی‌گردانید و نیازی به نوشتن `return prefix` نمی‌باشد.
+  * در مستندات تابع شما این موضوع نشان داده می‌شود تا کد شما خواناتر باشد.
+* عبارت `default` وقتی اجرا می‌شود که هیچ‌کدام از گزینه‌های موجود در `switch` اجرایی نشده باشند.
+* نام این تابع با حروف کوچک شروع شده، در گو اگر بخواهیم تابع را از خارج از بسته‌ی کد صدا بزنیم(به اصطلاع تابع عمومی باشد) نام آن را با حروف بزرگ شروع می‌کنیم و در صورتی که بخواهیم تنها از داخل بسته صدا زده شود نام آن را با حروف کوچک شروع می‌کنیم(تابع خصوصی است). ما نمی‌خواهیم توابع داخلی بسته برای جای دیگر نشان داده شود پس نام آن را با حروف کوچک شروع می‌کنیم.
+* همچنین ما می‌توانید ثابت‌ها را در یک گروه با یک دیگر تعریف کنیم، این کار خوبی هست که ثابت‌های مرتبط با هم یکجا تعریف شوند، تا خوانایی کد بالا برود.
 
-## Wrapping up
+## جمع‌بندی
 
-Who knew you could get so much out of `Hello, world`?
+چه کسی فکر می‌کرد که بتوان برای تابع `Hello, world` این همه کار کرد؟
 
-By now you should have some understanding of:
+تا به اینجا شما باید اطلاعات زیر را بدانید:
 
-### Some of Go's syntax around
+### بخشی از سینتکس گو
 
-* Writing tests
-* Declaring functions, with arguments and return types
-* `if`, `const` and `switch`
-* Declaring variables and constants
+* نوشتن تست
+* تعریف تابع با آرگومان‌ها و مقدار بازگشتی
+* دستورات `if`، `const` و `switch`
+* تعریف متغیر و ثابت
 
-### The TDD process and _why_ the steps are important
+### فرایند برنامه‌نویسی تست محور و اهمیت تکرار فرایند
 
-* _Write a failing test and see it fail_ so we know we have written a _relevant_ test for our requirements and seen that it produces an _easy to understand description of the failure_
-* Writing the smallest amount of code to make it pass so we know we have working software
-* _Then_ refactor, backed with the safety of our tests to ensure we have well-crafted code that is easy to work with
+* نوشتن یک تست که به خطا می‌خورد و دیدن به خطا خوردن آن، تا از یک طرف مطمئن شویم تستی که نوشتیم به تابع ما مرتبط هست و با مشکل داشتن تابع خطا می‌دهد، و از طرفی متن خطا را ببینیم تا مطمئن شویم که متن خطا خوانا است.
+* نوشتن کمترین کد مورد نیاز برای پاس شدن تست تا بدانیم که کد ما کار می‌کند.
+* ری‌فکتور کد با در نظر گرفتن تست‌ها تا از بابت راحتی تغییر مطمئن شویم و بدانیم ساختار کدمان درست تعریف شده.
 
-In our case we've gone from `Hello()` to `Hello("name")`, to `Hello("name", "French")` in small, easy to understand steps.
+در موردی که بررسی کردیم ما از تابع `Hello()` شروع کردیم، و سپس به تابع‌های `Hello("name")` و `Hello("name", "french")` رسیدیم و این کار را در گام‌های کوچک و قابل فهم انجام دادیم.
 
-This is of course trivial compared to "real world" software but the principles still stand. TDD is a skill that needs practice to develop, but by breaking problems down into smaller components that you can test, you will have a much easier time writing software.
+البته این کارها نسبت به مسائل اصلی دنیای واقعی بسیار ساده هست، اما اصول آن یکی است. برنامه‌نویسی تست محور مهارتی هست که یادگیری آن نیاز به تمرین دارد، اما به شکستن مسئله به مسائل کوچک‌تر کار شما برای نوشتن نرم‌افزار خیلی راحت‌تر می‌شود.
