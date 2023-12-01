@@ -1,3 +1,6 @@
+<div align="right">
+
+
 # فهرست
 
 * [یادگیری گو با تست](gb-readme.md)
@@ -55,3 +58,5 @@
 * [Anti-patterns](anti-patterns.md)
 * [Contributing](contributing.md)
 * [Chapter Template](template.md)
+
+</div>

@@ -1,3 +1,5 @@
+<div align="right">
+
 # سلام دنیا
 
 **[شما می‌توانید کدهای این بخش را اینجا ببینید](https://github.com/quii/learn-go-with-tests/tree/main/hello-world)**
@@ -6,6 +8,7 @@
 
 - هر جا که می‌خواهید یک فولدر بسازید
 - فایل `hello.go` را ایجاد کنید و محتوای زیر را در آن بنویسید
+</div>
 
 ```go
 package main
@@ -16,6 +19,7 @@ func main() {
 	fmt.Println("Hello, world")
 }
 ```
+<div align="right">
 
 برای اجرای آن دستور  `go run hello.go` را بزنید.
 
@@ -33,6 +37,7 @@ func main() {
 
 پس می‌توان این دو را از هم جدا کرد.
 
+</div>
 
 ```go
 package main
@@ -47,10 +52,12 @@ func main() {
 	fmt.Println(Hello())
 }
 ```
+<div align="right">
+
 ما دوباره یک تابع جدید ساختیم اما این بار پس از تعریف تابع از کلمه‌ی کلیدی `string` استفاده کردیم که یعنی وظیفه‌ی تابع بازگرداندن یک رشته است.
 
 حال یک فایل جدید با نام `hello_test.go` می‌سازیم که در آن تست‌های مربوط به تابغ `Hello` را می‌نویسیم.
-
+</div>
 
 ```go
 package main
@@ -66,24 +73,29 @@ func TestHello(t *testing.T) {
 	}
 }
 ```
+<div align="right">
 
 ## ماژول‌های گو؟
 
 گام بعدی اجرای تست است. دستور `go test` را در ترمینال بزنید. اگر تست‌ها پاس شد احتمالا دارید از نسخه‌های قدیمی‌تر گو استفاده می‌کنید. اگر از نسخه‌ی ۱.۱۶ یا جدیدتر استفاده می‌کنید پس احتمالا کد شما اصلا اجرا نمی‌شود، و شما چنین خطابب در ترمینال می‌بینید:
-
+</div>
 
 ```shell
 $ go test
 go: cannot find main module; see 'go help modules'
 ```
+<div align="right">
 
 مشکل چیست? اگر بخواهیم در یک کلمه مشکل را بگوییم، مشکل, [ماژول‌ها](https://blog.golang.org/go116-module-changes) هستند. خوشبحتانه راه حل آن ساده است. دستور `go mod init hello` را در ترمینال وارد کنید. این دستور فایلی با محتوای زیر برای شما تولید می‌کند:
+</div>
 
 ```
 module hello
 
 go 1.16
 ```
+<div align="right">
+
 این فایل به `go` اطلاعات اساسی مربوط به کد شما را می‌دهد. اگر تصمیم دارید برنامه‌ی خود را به دیگران بدهید، شما هم باید بگویید که کد را از کجا بگیرد، هم اینکه این کد چه نیازمندی‌هایی برای اجرا دارد. در حال حاضر ماژول شما حداقل‌ها را دارد، و فعلا می‌تواند اینگونه باشد. برای آنکه اطلاعات بیشتری درباره‌ی ماژول داشته باشید [می‌توانید به مستندات گو در مورد ماژول مراجعه کنید](https://golang.org/doc/modules/gomod-ref). حالا که تست می‌تواند اجرا شود به سراغ ادامه‌ی کار می‌رویم.
 
 در بخش‌های بعدی بخاطر داشته باشید فبل از دستورات `go test` و `go build` باید ابتدا دستور `go mod init SOMENAME‍` را بزنید تا ماژول ساخته شود.
@@ -142,6 +154,8 @@ go 1.16
 
 بیایید ابتدا نیازمندی خود را در تست مشخص کنیم. این یک برنامه‌نویس تست محور مقدماتی هست و به ما اجازه می‌دهد تا مطمئن شویم تست ما واقعا چیزی که ما می‌خواهیم را تست می‌کند. گاهی اوقات هنگام کد نوشتن تست شما حتا اگر با خطا هم مواجه باشد موفق است، در این مواقع شما به درستی تست نمی‌کنید. باید مطمئن شوید که تستتان در صورت وجود مشکل خطا بدهد.
 
+</div>
+
 ```go
 package main
 
@@ -156,13 +170,18 @@ func TestHello(t *testing.T) {
 	}
 }
 ```
+<div align="right">
+
 حال دستور `go test` را بزنید شما باید خطای زمان کامپایل بگیرید
 
+</div>
 ```text
 ./hello_test.go:6:18: too many arguments in call to Hello
     have (string)
     want ()
 ```
+<div align="right">
+
 
 وقتی با یک زبان برنامه‌نویسی ایستا (Statically typed programming languages) مانند گو سروکار دارید، بهتر است به حرف کامپایلر گوش کنید، در این زیان‌ها کامپایلر می‌داند کد چگونه کار می‌کند تا شما مجبور نباشید آن را بدانید.
 
@@ -171,34 +190,41 @@ func TestHello(t *testing.T) {
 
 تابع `Hello` را به شکل زیر تغییر دهید تا یک آرگومان بگیرد.
 
+</div>
 ```go
 func Hello(name string) string {
 	return "Hello, world"
 }
 ```
+<div align="right">
 
 اگر دوباره تست خود را اجرا کنید خطا می‌گیرید چرا که هنگام صدا زدن تابع `Hello` باید یک آرگومان هم وارد کنید.
-
+</div>
 ```go
 func main() {
 	fmt.Println(Hello("world"))
 }
 ```
+<div align="right">
 
 حالا موقع اجرای تست چنین پیامی باید ببینید
+</div>
 ```text
 hello_test.go:10: got 'Hello, world' want 'Hello, Chris''
 ```
+<div align="right">
 
 بالاخره کد ما قابل تست شد اما باز هم تست موفقیت‌آمیز نبود.
 
 حال وقت آن است که با تغییر تابع `Hello` کاری کنیم که نتیجه‌ی مقبول ما را بدهد.
 
+</div>
 ```go
 func Hello(name string) string {
 	return "Hello, " + name
 }
 ```
+<div align="right">
 
 حالا وقتی تست را اجرا کنیم تست با موفقیت پاس می‌شود. براساس چرخه‌ی برنامه‌نویسی تست محور حالا وقت ری‌فکتور می‌باشد.
 
@@ -213,12 +239,15 @@ func Hello(name string) string {
 ### ثابت‌ها
 
 ثابت‌ها مانند زیر تعریف می‌شوند.
+</div>
 
 ```go
 const englishHelloPrefix = "Hello, "
 ```
+<div align="right">
 
 حالا ما می‌توانیم کد خود را ری‌فکتور کنیم
+</div>
 
 ```go
 const englishHelloPrefix = "Hello, "
@@ -227,6 +256,8 @@ func Hello(name string) string {
 	return englishHelloPrefix + name
 }
 ```
+
+<div align="right">
 
 بعد از ری‌فکتور کردن یک بار دیگر تست‌ها را اجرا کنید تا مطمئن شوید چیزی خراب نشده باشد.
 
@@ -237,6 +268,7 @@ func Hello(name string) string {
 خوب است در گام بعدی کاری کنیم که اگر یک رشته‌ی خالی به کد دادیم به ما «Hello, World» تحویل دهد نه «Hello, »
 
 کارمان را با نوشتن تست جدید شروع می‌کنیم
+</div>
 
 ```go
 func TestHello(t *testing.T) {
@@ -258,6 +290,7 @@ func TestHello(t *testing.T) {
 	})
 }
 ```
+<div align="right">
 
 حالا ما یک مفهوم دیگر را معرفی می‌کنیم، زیر مجموعه‌ها. گاهی حوب است که تست‌هایمان را حول یک چیز گروه‌بندی کنیم و بعد یک زیرمجموعه داشته باشیم که سناریوهای متقاوت از آن چیز را تست کند.
 
@@ -265,6 +298,7 @@ func TestHello(t *testing.T) {
 
 حالا بیایید با استفاده از `if` کاری کنیم تستمان درست کار کند.
 
+</div>
 
 ```go
 const englishHelloPrefix = "Hello, "
@@ -276,6 +310,8 @@ func Hello(name string) string {
 	return englishHelloPrefix + name
 }
 ```
+<div align="right">
+
 حالا اگر تست‌های خود را اجرا کنیم باید ببینیم که تست‌ها موفق هستند، و چیزی خراب نشده.
 
 مهم هست که تست‌های شما به شکل شفاف هر آنچه مورد نیاز هست را تست کرده باشد. اما این موضوع باعث تکرار کردن در کد می‌شود.
@@ -283,6 +319,8 @@ func Hello(name string) string {
 ری‌فکتور تنها برای کد اصلی نیست!
 
 جالا که تست‌ها موفق هستند، خوب است که خود تست‌ها را ری‌فکتور کنیم
+
+</div>
 
 ```go
 func TestHello(t *testing.T) {
@@ -307,6 +345,7 @@ func assertCorrectMessage(t testing.TB, got, want string) {
 	}
 }
 ```
+<div align="right">
 
 ما اینجا چه کار کردیم؟
 
@@ -349,6 +388,7 @@ func assertCorrectMessage(t testing.TB, got, want string) {
 
 یک تست برای زبان اسپانیایی اضافه می‌کنیم.
 
+</div>
 ```go
 	t.Run("in Spanish", func(t *testing.T) {
 		got := Hello("Elodie", "Spanish")
@@ -356,18 +396,20 @@ func assertCorrectMessage(t testing.TB, got, want string) {
 		assertCorrectMessage(t, got, want)
 	})
 ```
+<div align="right">
 
 یادتان باشد چرخه را دور نزنید، اول تست می‌نویسیم. وقتی سعی می‌کنید تست را اجرا کنیپ کامپایلر خطا می‌دهد چرا که سعی دارید با دو آرگومان `Hello` را صدا بزنید.
 
-
+</div>
 ```text
 ./hello_test.go:27:19: too many arguments in call to Hello
     have (string, string)
     want (string)
 ```
+<div align="right">
 
 با اضافه کردن یک آرگومان دیگر به `Hello` این مشکل را برطرف کنید
-
+</div>
 ```go
 func Hello(name string, language string) string {
 	if name == "" {
@@ -376,23 +418,29 @@ func Hello(name string, language string) string {
 	return englishHelloPrefix + name
 }
 ```
-وقتی سعی کنید تست‌ها را اجرا کنید این بار خطا می‌دهد که دیگر تست‌های موجود به اندازه‌ی کافی آرگومان ندارند.
+<div align="right">
 
+وقتی سعی کنید تست‌ها را اجرا کنید این بار خطا می‌دهد که دیگر تست‌های موجود به اندازه‌ی کافی آرگومان ندارند.
+</div>
 
 ```text
 ./hello.go:15:19: not enough arguments in call to Hello
     have (string)
     want (string, string)
 ```
+<div align="right">
 
 با اضافه کردن یک رشته‌ی خالی به آرگومان‌های تست‌های دیگر مشکل آن‌ها را برطرف کنید، حالا همه‌ی تست‌ها باید پاس شوند به جز آخرین تست.
 
-
+</div>
 ```text
 hello_test.go:29: got 'Hello, Elodie' want 'Hola, Elodie'
 ```
+<div align="right">
 
 ما از یک `if` استفاده می‌کنیم که اگر زبان اسپانیایی بود کلمه‌ی سلام را به زبان اسپانیایی بنویسد
+</div>
+
 ```go
 func Hello(name string, language string) string {
 	if name == "" {
@@ -405,10 +453,12 @@ func Hello(name string, language string) string {
 	return englishHelloPrefix + name
 }
 ```
+<div align="right">
 
 حالا تست‌ها باید پاس شوند.
 
 حالا زمان ری‌فکتور است. شما باید متوجه بعضی مشکلات بشوید، رشته‌های جادویی که بعضی از آن‌ها چندین بار تکرار شده. سعی کنید خودتان کد را ری‌فکتور کنید و مطمئن بشید هر بار پس از ری‌فکتور تست‌ها را اجرا کنید تا چیزی خراب نشده باشد.
+</div>
 
 ```go
 	const spanish = "Spanish"
@@ -426,6 +476,7 @@ func Hello(name string, language string) string {
 		return englishHelloPrefix + name
 	}
 ```
+<div align="right">
 
 ### فرانسوی
 
@@ -434,6 +485,8 @@ func Hello(name string, language string) string {
 * کمترین تغییر قابل قبول را در کد بدهید تا تست‌ها پاس شود
 
 احتمالا چیزی که می‌نویسید مانند زیر باشد
+
+</div>
 
 ```go
 func Hello(name string, language string) string {
@@ -450,11 +503,13 @@ func Hello(name string, language string) string {
 	return englishHelloPrefix + name
 }
 ```
+<div align="right">
 
 ## `دستور switch`
 
 وقتی کلی دستور `if` دارید معمولا بهتر است به جای آن از دستور `switch` استفاده کنید. ما می‌توانید کد را به شکلی ری‌فکتور کنیم که از این دستور استفاده شود تا خوانایی کد بیشتر شود و در آینده به راحتی از زبان‌های بیشتری بشود پشتیبانی کرد.
 
+</div>
 
 ```go
 func Hello(name string, language string) string {
@@ -474,6 +529,7 @@ func Hello(name string, language string) string {
 	return prefix + name
 }
 ```
+<div align="right">
 
 حالا یک زبان به انتخاب خودتان اضافه کنید تا ببینید اضافه شدن زبان جدید چقدر راحت‌تر شده است.
 
@@ -481,6 +537,7 @@ func Hello(name string, language string) string {
 
 ممکن است بگویید که تابع ما کمی بزرگ شده است. ساده‌ترین ری‌فکتور این است که بخشی از کار را به تابع دیگری منتقل کنیم
 
+</div>
 
 ```go
 
@@ -513,6 +570,7 @@ func greetingPrefix(language string) (prefix string) {
 	return
 }
 ```
+<div align="right">
 
 چند مفهوم جدید:
 * در امضای تابع ما برای مقدار بازگشتی اسم مشخص کردیم `(prefix string)`.
@@ -546,3 +604,4 @@ func greetingPrefix(language string) (prefix string) {
 در موردی که بررسی کردیم ما از تابع `Hello()` شروع کردیم، و سپس به تابع‌های `Hello("name")` و `Hello("name", "french")` رسیدیم و این کار را در گام‌های کوچک و قابل فهم انجام دادیم.
 
 البته این کارها نسبت به مسائل اصلی دنیای واقعی بسیار ساده هست، اما اصول آن یکی است. برنامه‌نویسی تست محور مهارتی هست که یادگیری آن نیاز به تمرین دارد، اما به شکستن مسئله به مسائل کوچک‌تر کار شما برای نوشتن نرم‌افزار خیلی راحت‌تر می‌شود.
+</div>
