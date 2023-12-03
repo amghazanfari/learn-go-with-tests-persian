@@ -1,14 +1,14 @@
-# Iteration
+# تکرار
 
-**[You can find all the code for this chapter here](https://github.com/quii/learn-go-with-tests/tree/main/for)**
+**[شما می‌توانید کدهای این بخش را اینجا ببینید](https://github.com/quii/learn-go-with-tests/tree/main/for)**
 
-To do stuff repeatedly in Go, you'll need `for`. In Go there are no `while`, `do`, `until` keywords, you can only use `for`. Which is a good thing!
+برای انجام کارهای تکراری در گو شما از `for` استفاده می‌کنید، در گو عبارات کلیدی `while`، `do`، و `until` وجود ندارد. تنها ابزار شما `for` می‌باشد که چیز خوبیست.
 
-Let's write a test for a function that repeats a character 5 times.
+بیایید تابعی بنویسیم که یک حرف را پنج بار تکرار می‌کند.
 
-There's nothing new so far, so try and write it yourself for practice.
+چیز جدیدی در ایت زمینه وجود ندارد پس تلاش کنید خودتان بنویسید.
 
-## Write the test first
+## ابتدا تست را می‌نویسیم
 
 ```go
 package iteration
@@ -25,15 +25,15 @@ func TestRepeat(t *testing.T) {
 }
 ```
 
-## Try and run the test
+## تلاش می‌کنیم تست را اجرا کنیم
 
 `./repeat_test.go:6:14: undefined: Repeat`
 
-## Write the minimal amount of code for the test to run and check the failing test output
+## کمترین میزان کد برای اجرای تست را می‌نویسیم که خطایی که تستمان می‌دهد را ببینیم
 
-_Keep the discipline!_ You don't need to know anything new right now to make the test fail properly.
+مراحل را به ترتیب انجام دهید شما چیز جدیدی لازم نیست بدانید که کاری کنید تست خطا بدهد.
 
-All you need to do right now is enough to make it compile so you can check your test is written well.
+تمام چیزی که لازم هست مقدار کافی کد هست که باعث کامپایل شدن تست بشود اما باعث پاس شدن آن نشود.
 
 ```go
 package iteration
@@ -42,14 +42,13 @@ func Repeat(character string) string {
 	return ""
 }
 ```
-
-Isn't it nice to know you already know enough Go to write tests for some basic problems? This means you can now play with the production code as much as you like and know it's behaving as you'd hope.
+خوب نیست که می‌دانید برای مسائل پایه‌ای چگونه تست گو بنویسید؟ این یعنی شما حالا می‌توانیدهرچقدر که می‌خواهید با پروداکشن کار کنید و خیالتان راحت باشد که همه چیز درست است یا نه.
 
 `repeat_test.go:10: expected 'aaaaa' but got ''`
 
-## Write enough code to make it pass
+## به اندازه‌ی کافی کد بنویسید که پاس شود
 
-The `for` syntax is very unremarkable and follows most C-like languages.
+سینتکس `for` به شدت شبیه زبان سی می‌باشد و چیز زیادی ندارد.
 
 ```go
 func Repeat(character string) string {
@@ -60,22 +59,21 @@ func Repeat(character string) string {
 	return repeated
 }
 ```
+برخلاف زبان‌های دیگر همچون سی، جاوا، و جاوااسکریپت، برای حلقه‌ نیازی به پرانتز نیست و گذاشتن کرلی براکت `{}` الزامی هست. شاید برایتان سوال باشد که خط پایین یعنی چه
 
-Unlike other languages like C, Java, or JavaScript there are no parentheses surrounding the three components of the for statement and the braces `{ }` are always required. You might wonder what is happening in the row
 
 ```go
 	var repeated string
 ```
+قبلا ما برای ساخت یک متغیر از `:=` استفاده می‌کردیم که ابزاری برای ساختن و مقداردهی به یک متغیر بود و [دو کار را با هم انجام می‌داد](https://gobyexample.com/variables). در خط بالا ما تنها متغیر را می‌سازیم و به آن مقدار نمی‌دهیم. از `var` برای ساخت تابع هم می‌توان استفاده کرد که بعدا می‌بینیم.
 
-as we've been using `:=` so far to declare and initializing variables. However, `:=` is simply [short hand for both steps](https://gobyexample.com/variables). Here we are declaring a `string` variable only. Hence, the explicit version. We can also use `var` to declare functions, as we'll see later on.
+تست را اجرا کنید الان باید پاس شود.
 
-Run the test and it should pass.
+روش استفاده از for به شکل مفصل [اینجا](https://gobyexample.com/for) توضیح داده شده.
 
-Additional variants of the for loop are described [here](https://gobyexample.com/for).
+## ری‌فکتور
 
-## Refactor
-
-Now it's time to refactor and introduce another construct `+=` assignment operator.
+حالا زمان ری‌فکتور و معرفی یک اپراتور جدید است، `=+` .
 
 ```go
 const repeatCount = 5
@@ -89,11 +87,11 @@ func Repeat(character string) string {
 }
 ```
 
-`+=` called _"the Add AND assignment operator"_, adds the right operand to the left operand and assigns the result to left operand. It works with other types like integers.
+`=+` که متغیر اضافه کردن و مقداردهی است. کار آن این است که مقدار سمت راست اپراتور را با مقدار سمت چپ جمع کند و پاسخ را در متغیر سمت چپ بریزد. این با انواع دیگری همچون اعداد صحیح هم کار می‌کند.
 
-### Benchmarking
+### محک
 
-Writing [benchmarks](https://golang.org/pkg/testing/#hdr-Benchmarks) in Go is another first-class feature of the language and it is very similar to writing tests.
+نوشتن [محک](https://golang.org/pkg/testing/#hdr-Benchmarks) یکی دیگر از ویژگی‌های مهم گو هست و همچون تست نوشتن می‌ماند.
 
 ```go
 func BenchmarkRepeat(b *testing.B) {
@@ -103,7 +101,7 @@ func BenchmarkRepeat(b *testing.B) {
 }
 ```
 
-You'll see the code is very similar to a test.
+همانطور که می‌بینید محک‌نویسی مثل تست‌نویسی می‌ماند.
 
 The `testing.B` gives you access to the cryptically named `b.N`.
 
