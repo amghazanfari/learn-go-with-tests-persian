@@ -89,9 +89,9 @@ func Repeat(character string) string {
 
 `=+` که متغیر اضافه کردن و مقداردهی است. کار آن این است که مقدار سمت راست اپراتور را با مقدار سمت چپ جمع کند و پاسخ را در متغیر سمت چپ بریزد. این با انواع دیگری همچون اعداد صحیح هم کار می‌کند.
 
-### محک
+### بنچمارک
 
-نوشتن [محک](https://golang.org/pkg/testing/#hdr-Benchmarks) یکی دیگر از ویژگی‌های مهم گو هست و همچون تست نوشتن می‌ماند.
+نوشتن [بنچمارک](https://golang.org/pkg/testing/#hdr-Benchmarks) یکی دیگر از ویژگی‌های مهم گو هست و همچون تست نوشتن می‌ماند.
 
 ```go
 func BenchmarkRepeat(b *testing.B) {
@@ -101,15 +101,17 @@ func BenchmarkRepeat(b *testing.B) {
 }
 ```
 
-همانطور که می‌بینید محک‌نویسی مثل تست‌نویسی می‌ماند.
+همانطور که می‌بینید بنچمارک‌نویسی مثل تست‌نویسی می‌ماند.
 
-The `testing.B` gives you access to the cryptically named `b.N`.
+عبارت `testing.B` به شما این امکان را می‌دهد که از `b.N` استفاده کنید.
 
-When the benchmark code is executed, it runs `b.N` times and measures how long it takes.
+وقتی بنچمارک اجرا می‌شود, به تعداد `b.N` بار تکرار می‌شود و در آخر محاسبه می‌کند که چقدر طول کشید.
 
-The amount of times the code is run shouldn't matter to you, the framework will determine what is a "good" value for that to let you have some decent results.
+تعداد دفعات اجرای کد نباید برای شما مهم باشد, خود سرویس برای شما تعداد «مناسب» را برای شما تعیین می‌کند.
 
-To run the benchmarks do `go test -bench=.` (or if you're in Windows Powershell `go test -bench="."`)
+برای اجرای بنچمارک دستور زیر را بزنید
+
+`go test -bench=.`
 
 ```text
 goos: darwin
@@ -119,18 +121,18 @@ pkg: github.com/quii/learn-go-with-tests/for/v4
 PASS
 ```
 
-What `136 ns/op` means is our function takes on average 136 nanoseconds to run \(on my computer\). Which is pretty ok! To test this it ran it 10000000 times.
+مقدار `136 ns/op` یعنی کد ما به شکل میانگین ۱۳۶ نانو ثانیه طول کشیده تا تابع را اجرا کند که مقدار خوبی مجسوب می‌شود.
 
-_NOTE_ by default Benchmarks are run sequentially.
+نکته: به شکل پیش‌فرض بنچمارک‌ یکی یکی اجرا می‌شود.
 
-## Practice exercises
+## تمرین
 
-* Change the test so a caller can specify how many times the character is repeated and then fix the code
-* Write `ExampleRepeat` to document your function
-* Have a look through the [strings](https://golang.org/pkg/strings) package. Find functions you think could be useful and experiment with them by writing tests like we have here. Investing time learning the standard library will really pay off over time.
+* تست را به گونه‌ای تغییر دهید که تست تعداد دفعات تکرار را بگیرد و سپس کد را براساس آن درست کنبد
+* یک `ExampleRepeat` بنویسید تا از تابع خود مستند داشته باشید
+* نگاهی به بسته‌ی [strings](https://golang.org/pkg/strings) بیندازید. توابعی که فکر می‌کنید مفید باشند را پیدا کنید و با استفاده از آن‌ها تست بنویسید. یادگیری کتابخانه‌ی استاندارد در بلند مدت بسیار مفید است.
 
-## Wrapping up
+## جمع‌بندی
 
-* More TDD practice
-* Learned `for`
-* Learned how to write benchmarks
+* تمرین تست محور بیشتر
+* یادگیری `for`
+* یادگیری نوشتن بنچمارک
